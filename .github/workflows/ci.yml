@@ -12,6 +12,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+
     - name: Install and Build
       run: |
         npm ci
