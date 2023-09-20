@@ -1,4 +1,6 @@
 name: Build vuepress website
+permissions:
+  contents: write
 on:
   push:
     branches:
@@ -8,13 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v4
+
+    - name: Install and Build
+      run: |
+        npm ci
+        npm run build
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@main
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: .vuepress/dist
-        CNAME: license.disfactory.tw
-        BUILD_SCRIPT: npm install && npm run build
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: .vuepress/dist
+        clean-exclude: |
+          CNAME
+
