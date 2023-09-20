@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: Disfactory 違章工廠舉報系統
+heroText: Disfactory 違章工廠回報系統
 tagline: null
 actionText: 現在去舉報 →
 actionLink: https://disfactory.tw
